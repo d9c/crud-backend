@@ -39,8 +39,8 @@ const UserController = {
     }
 
     const user = {
-      name,
-      email,
+      name: name,
+      email: email,
     };
 
     try {
@@ -55,14 +55,14 @@ const UserController = {
     const { name, email } = req.body;
 
     const user = {
-      name,
-      email,
+      name: name,
+      email: email,
     };
 
     try {
-      const newUser = await User.updateOne({ _id: id }, user);
+      const updatedUser = await User.updateOne({ _id: id }, user);
 
-      if (newUser.matchedCount === 0) {
+      if (updatedUser.matchedCount === 0) {
         res.status(422).json({ error: "User not found" });
         return;
       }
